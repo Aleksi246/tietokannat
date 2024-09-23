@@ -1,0 +1,55 @@
+
+
+select country.name
+from country
+where iso_country in (
+select airport.iso_country
+from airport
+where airport.name like "Satsuma%"
+);
+
+
+
+
+select airport.name
+from airport
+where airport.iso_country in(
+select country.iso_country
+from country
+where country.name = "Monaco"
+);
+
+
+
+select screen_name
+from game
+where game.id in(
+select game_id
+from goal_reached
+where goal_id in(
+select id
+from goal
+where description ="Cloudy"
+)
+);
+
+
+select country.name
+from country
+where country.iso_country not in (
+select airport.iso_country
+from airport);
+
+
+
+select goal.name
+from goal
+where goal.id not in(
+select goal_id
+from goal_reached
+where goal_reached.game_id in (
+select game.id
+from game
+where screen_name = "Heini"
+)
+);
